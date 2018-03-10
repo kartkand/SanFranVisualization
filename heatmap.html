@@ -288,5 +288,28 @@ function textArt(text){
       return 0.1 + Math.random()*0.4;
     });*/
 }
-
+d3.csv("sfpd_dispatch_data_subset.csv", function(error, coordinates) {
+    // add circles to svg
+    g.selectAll("circle")
+    .data(coordinates).enter()
+    .append("circle")
+    .attr("cx", function (d) { 
+      coord = [Number(d.longitude), Number(d.latitude)];
+      return projection(coord)[0]; 
+    })
+    .attr("cy", function (d) { 
+      coord = [Number(d.longitude), Number(d.latitude)];
+      return projection(coord)[1]; 
+    })
+    //.attr("r", "1px")
+    .attr("r", function(d) {
+      final = +d.final_priority
+      if(final === 2) {
+        return "1px";
+      } else {
+        return "0.4px";
+      }
+    })
+    .attr("fill", "red")
+});
 </script>
