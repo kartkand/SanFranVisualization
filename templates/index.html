@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <meta charset="utf-8">
+  <title>SFPD Data Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SFPD Data Analysis">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+  <link href="/static/css/theme.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+</head>
+
+<body class="websites">
+
+  
+  {% include 'architecture/navbar.html' %}
+  <script type="text/javascript">
+      $('#home_page').addClass('active');
+  </script>
+
+  <div id="main-content" style="padding-top: 50px;">
+
+      <div class="container" id="description" style="padding-bottom: 50px;">
+          <div class="row">
+              <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 centerdiv">
+                  <h1 class="title">Description</h1>
+                  </br>
+                  <p>As San Francisco's population has surged, the emergency call volume and response rate have done the same. By analyzing past data from the San Francisco Police Department, we will be able to observe trends in the data that may help to alleviate the pressure on the police force. As can be seen in the table below, the West of Twin Peaks, Financial District/South Beach, and Portola neighborhoods all had an average dispatch time greater than 5 minutes in the data set provided to us. On the other end of the spectrum, Golden Gate Park appears to be the only neighborhood with an average time to dispatch that is under 2 minutes. This response time is unacceptable and must be fixed as soon as possible to ensure the safety of the citizens of the city. This can be done by devoting more resources to the areas with highest dispatch times such as the ones listed above.</p>
+              </div>
+          </div>
+      </div>
+
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Neighborhood</th>
+            <th scope="col">Average Dispatch Time (minutes)</th>
+            <th scope="col">Dispatches</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for element in nHoods %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{element.name}}</td>
+            <td>{{element.averageDispatchTime}}</td>
+            <td>{{element.dispatches}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+
+  </div>
+
+  </div>
+
+</body>
+
+</html>

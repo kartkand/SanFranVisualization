@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <meta charset="utf-8">
+  <title>Crossfilter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SFPD Data Analysis">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+  <link href="/static/css/theme.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+/*  body {
+    font-family: "Helvetica Neue";
+    margin: 40px auto;
+    width: 960px;
+    min-height: 2000px;
+  }*/
+  #body {
+    position: relative;
+  }
+  footer {
+    padding: 2em 0 1em 0;
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 96px;
+    margin-top: .3em;
+    margin-bottom: 0;
+  }
+  h1 + h2 {
+    margin-top: 0;
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 28px;
+  }
+  #body > p {
+    line-height: 1.5em;
+    width: 640px;
+    text-rendering: optimizeLegibility;
+  }
+  #charts {
+    padding: 10px 0;
+  }
+  .chart {
+    display: inline-block;
+    height: 151px;
+    margin-bottom: 20px;
+  }
+  .reset {
+    padding-left: 1em;
+    font-size: smaller;
+    color: #ccc;
+  }
+  .background.bar {
+    fill: #ccc;
+  }
+  .foreground.bar {
+    fill: steelblue;
+  }
+  .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  .axis text {
+    font: 10px sans-serif;
+  }
+  .brush rect.extent {
+    fill: steelblue;
+    fill-opacity: .125;
+  }
+  .brush .resize path {
+    fill: #eee;
+    stroke: #666;
+  }
+  #hour-chart {
+    width: 260px;
+  }
+  #delay-chart {
+    width: 230px;
+  }
+  #distance-chart {
+    width: 420px;
+  }
+  #date-chart {
+    width: 920px;
+  }
+  #incident-list {
+    min-height: 1024px;
+  }
+  #incident-list .date,
+  #incident-list .day {
+    margin-bottom: .4em;
+  }
+  #incident-list .incident {
+    line-height: 1.5em;
+    background: #eee;
+    width: 640px;
+    margin-bottom: 1px;
+  }
+  #incident-list .time {
+    color: #999;
+  }
+  #incident-list .incident div {
+    display: inline-block;
+    width: 100px;
+  }
+  #incident-list div.distance,
+  #incident-list div.delay {
+    width: 160px;
+    padding-right: 10px;
+    text-align: right;
+  }
+  #incident-list .early {
+    color: green;
+  }
+  aside {
+    position: absolute;
+    left: 740px;
+    font-size: smaller;
+    width: 220px;
+  }
+  </style>
+</head>
+
+<body class="websites">
+
+
+  {% include 'architecture/navbar.html' %}
+  <script type="text/javascript">
+      $('#crossfilter_page').addClass('active');
+  </script>
+
+  <div id="main-content" style="padding-top: 50px;">
+    <div class="container" id="description">
+          <div class="row">
+              <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 centerdiv">
+                  <h1 class="title">Description</h1>
+                  </br>
+                  <p>The coordinated visualizations below show ten thousand police dispatches in the San Francisco area. The crossfilters allow users to hone in on specific subset of the data with multiple dimensions for analysis. The table displays the call time of a dispatch, the zip code in which the incident occurred in, and the time to dispatch.</p>
+              </div>
+          </div>
+      </div>
+    <div style="margin: 40px auto; width: 960px;">
+
+      <div id="charts">
+      <div id="hour-chart" class="chart">
+        <div class="title">Time of Day of Call</div>
+      </div>
+      <div id="delay-chart" class="chart">
+        <div class="title">Time to Dispatch (min.)</div>
+      </div>
+      <div id="distance-chart" class="chart">
+        <div class="title">Zip Code of Incident</div>
+      </div>
+      <div id="date-chart" class="chart">
+        <div class="title">Date of Call</div>
+      </div>
+    </div>
+
+    <aside id="totals"><span id="active">-</span> of <span id="total">-</span> incidents selected.</aside>
+
+    <div id="lists">
+      <div id="incident-list" class="list"></div>
+    </div>
+
+
+    </div>
+
+    <script src="/static/js/crossfilter.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="/static/js/mycrossfilter.js"></script>
+    </div>
+
+
+
+  </div>
+
+  </div>
+
+</body>
+
+</html>

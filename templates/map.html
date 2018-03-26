@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <meta charset="utf-8">
+  <title>Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SFPD Data Analysis">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+  <link href="/static/css/theme.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+
+  <style>
+
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Josefin+Slab|Arvo|Lato|Vollkorn|Abril+Fatface|Old+Standard+TT|Droid+Sans|Lobster|Inconsolata|Montserrat|Playfair+Display|Karla|Alegreya|Libre+Baskerville|Merriweather|Lora|Archivo+Narrow|Neuton|Signika|Questrial|Fjalla+One|Bitter|Varela+Round);
+
+  .background {
+    fill: #eee;
+    pointer-events: all;
+  }
+
+  .map-layer {
+    fill: #fff;
+    stroke: #aaa;
+  }
+
+  .effect-layer{
+    pointer-events:none;
+  }
+
+  text{
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+
+  text.big-text{
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+  .effect-layer text, text.dummy-text{
+    font-size: 12px;
+  }
+
+  </style>
+</head>
+
+<body class="websites">
+
+  
+  {% include 'architecture/navbar.html' %}
+  <script type="text/javascript">
+      $('#map_page').addClass('active');
+  </script>
+
+  <div id="main-content" style="padding-top: 50px;">
+
+      <div class="container" id="description">
+          <div class="row">
+              <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 centerdiv">
+                  <h1 class="title">Description</h1>
+                  </br>
+                  <p>The map below plots out all of the dispatches. The bigger red dots represent incidents that were of an emergency priority while the smaller dots represent non-emergency dispatches. From the map, we see that Nob Hill, Tenderloin, the Financial District/Soutch Beach, and South Market had the highest densities of dispatches relative to other neighborhoods. Each of these districts are located in the North East part of San Francisco. Likewise, the Nort West part of San Francisco had relatively few incidents. This includes Presidio, Seacliff, and Lincoln Park.</p>
+              </div>
+          </div>
+      </div>
+
+      <div style="text-align:center;"><svg></svg></div>
+      <script src="https://d3js.org/d3.v3.min.js"></script>
+      <script src="/static/js/map.js"></script>
+
+
+
+  </div>
+
+  </div>
+
+</body>
+
+</html>
