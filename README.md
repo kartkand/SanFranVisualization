@@ -1,3 +1,3 @@
 # SanFranVisualization
 
-Hosted at https://sfpdanalysis.herokuapp.com/scatterplot
+Hosted at https://sfpdanalysis.herokuapp.com/
